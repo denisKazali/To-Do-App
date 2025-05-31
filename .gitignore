@@ -9,3 +9,5 @@
 *.out
 *.app
 
+#Other:
+*.txt
