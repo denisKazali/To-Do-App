@@ -1,0 +1,9 @@
+To-Do-App
+
+This is a CLI based task tracking application.
+It can add, list and delete task.
+
+Future plans are to add Authentication and Encryption of tasks and user details
+
+
+The purpose of this application is to practice C lang.
