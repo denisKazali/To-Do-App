@@ -4,10 +4,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-FILE* create_file();
-void append_to_file(FILE *fptr);
-void delete_line(int index, FILE *fptr);
-void delete_file(FILE *fptr);
+FILE* open_file(char mode);
 
 #endif
 
