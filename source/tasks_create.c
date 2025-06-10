@@ -20,17 +20,13 @@ int create_task(char *title, char *description, size_t title_s, size_t descripti
 int print_task(Task* task){
     FILE* f_ptr = file_open('a');
     if(f_ptr){
-        char status_string[] = {"PENDING", "IN PROCESS", "DONE", "STUCK"};
+        char const *status_string[] = {"PENDING", "IN PROCESS", "DONE", "STUCK"};
         fprintf(f_ptr, "{\n");
-        fprintf(f_ptr, "id:%u", task->id);
-        fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "title:%s", task->title);
-        fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "description:%s", task->description);
-        fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "status:%s", status_string[task->status]);
-        fprintf(f_ptr,"\n");
-        fprintf(f_ptr, "}\n");
+        fprintf(f_ptr, " id:%zu\n", task->id);
+        fprintf(f_ptr, " title:%s\n", task->title);
+        fprintf(f_ptr, " description:%s\n", task->description);
+        fprintf(f_ptr, " status:%s\n", status_string[task->status]);
+        fprintf(f_ptr, "}\n\n");
         fclose(f_ptr);
         return 0;
     }

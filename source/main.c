@@ -66,7 +66,7 @@ int main(void){
 
             }else if(current_menu == DELETE_TASK){
 
-            }else if(current_menu == EDIT_TAKS){
+            }else if(current_menu == EDIT_TASK){
 
             }else{
                 printf("Error: Invalid menu!\nExiting with status 1\n");
