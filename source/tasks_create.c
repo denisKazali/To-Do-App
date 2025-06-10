@@ -20,22 +20,7 @@ int create_task(char *title, char *description, size_t title_s, size_t descripti
 int print_task(Task* task){
     FILE* f_ptr = file_open('a');
     if(f_ptr){
-        char status_string[11];
-        switch(task->status){
-            case 0:
-                strcat(status_string, "PENDING");
-                break;
-            case 1:
-                strcat(status_string, "IN PROCESS");
-                break;
-            case 2:
-                strcat(status_string, "DONE");
-                break;
-            case 3:
-                strcat(status_string, "STUCK");
-                break;
-
-        }
+        char status_string[] = {"PENDING", "IN PROCESS", "DONE", "STUCK"};
         fprintf(f_ptr, "{\n");
         fprintf(f_ptr, "id:%u", task->id);
         fprintf(f_ptr, "\n");
@@ -43,7 +28,7 @@ int print_task(Task* task){
         fprintf(f_ptr, "\n");
         fprintf(f_ptr, "description:%s", task->description);
         fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "status:%s", status_string);
+        fprintf(f_ptr, "status:%s", status_string[task->status]);
         fprintf(f_ptr,"\n");
         fprintf(f_ptr, "}\n");
         fclose(f_ptr);

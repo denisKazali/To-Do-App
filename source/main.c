@@ -7,6 +7,7 @@
 typedef enum{MAIN_MENU, ADD_TASK, LIST_TASKS, DELETE_TASK, EDIT_TASK} menu_options_t;
 //Function to clear the contents of the screen and reset user_option and current_menu variables
 void to_main_menu(int* opt, menu_options_t* mnopt);
+void flush_stdin();
 
 int main(void){
     //On startup
@@ -26,6 +27,7 @@ int main(void){
     while(no_exit){
         //Using if statements for checking the current_menu status because it looks easier to understand
         if(scanf("%u", &user_option)){
+            flush_stdin();
             if(current_menu == MAIN_MENU){
                 switch(user_option){
                     case 0:
@@ -44,7 +46,7 @@ int main(void){
                         create_task(title_buffer, description_buffer, title_size, description_size);
                         free(title_buffer);
                         free(description_buffer);
-                        current_menu == ADD_TASK;
+                        current_menu = ADD_TASK;
                         break;
                     case 1:
                         break;
@@ -81,4 +83,9 @@ void to_main_menu(int* opt, menu_options_t* mnopt){
     print_menu();
     *opt = 5;
     *mnopt = 0;
+}
+
+void flush_stdin(){
+    int buff;
+    while((buff = getchar()) != '\n' && buff != EOF);
 }
