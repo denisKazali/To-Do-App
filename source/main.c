@@ -44,6 +44,7 @@ int main(void){
                         create_task(title_buffer, description_buffer, title_size, description_size);
                         free(title_buffer);
                         free(description_buffer);
+                        current_menu == ADD_TASK;
                         break;
                     case 1:
                         break;

@@ -8,8 +8,7 @@
 //print_task function and checks if the task is printed correctly. Returns 0 when task is printed and 1 if not
 //print_task returns 0 if the file is opened and 1 if there is error with opening the file
 int create_task(char *title, char *description, size_t title_s, size_t description_s){
-    Task user_task = {user_task.id = 0, user_task.title_size = title_s, user_task.descritpion_size = description_s,
-                                            user_task.title = title, user_task. description, user_task.status = 0};
+    Task user_task = {.id=0, .title_size=title_s, .description_size=description_s, .title=title, .description=description, .status=0};
     if(!print_task(&user_task)){
         printf("Task created successfully! \n");
         return 0;
@@ -21,23 +20,34 @@ int create_task(char *title, char *description, size_t title_s, size_t descripti
 int print_task(Task* task){
     FILE* f_ptr = file_open('a');
     if(f_ptr){
+        char status_string[11];
+        switch(task->status){
+            case 0:
+                strcat(status_string, "PENDING");
+                break;
+            case 1:
+                strcat(status_string, "IN PROCESS");
+                break;
+            case 2:
+                strcat(status_string, "DONE");
+                break;
+            case 3:
+                strcat(status_string, "STUCK");
+                break;
+
+        }
         fprintf(f_ptr, "{\n");
-        fprintf(f_ptr, "id:");
-        fprintf(f_ptr, task->id);
+        fprintf(f_ptr, "id:%u", task->id);
         fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "title:");
-        fprintf(f_ptr, task->title);
+        fprintf(f_ptr, "title:%s", task->title);
         fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "description:",
-        fprintf(f_ptr, task->description);
+        fprintf(f_ptr, "description:%s", task->description);
         fprintf(f_ptr, "\n");
-        fprintf(f_ptr, "status:");
-        fprintf(f_ptr, task->status);
+        fprintf(f_ptr, "status:%s", status_string);
         fprintf(f_ptr,"\n");
         fprintf(f_ptr, "}\n");
         fclose(f_ptr);
         return 0;
     }
-    fclose(f_ptr);
     return 1;
 }
