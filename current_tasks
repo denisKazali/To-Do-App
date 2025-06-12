@@ -1,11 +1,14 @@
 Delete all current implementation (as of 05, JUNE, 2025)
 Create new .c files each for a specific task:
     -- tasks_create.c
-        -- create a task struct that has these variables:
-            -- id  - size_t (skip negative value check)
-            -- title - char string - short lenght, no spaces
-            -- description - char string, start with buffer size 200, later implement dynamic allocation
-            -- status - use enums (DONE, PENDING, IN_PROCESS)
+        -- create a task struct that has these variables:                                                   DONE
+            -- id  - size_t (skip negative value check)                                                     DONE
+            -- title - char string - short lenght, no spaces                                                DONE
+            -- description - char string, start with buffer size 200, later implement dynamic allocation    DONE
+            -- status - use enums (DONE, PENDING, IN_PROCESS)                                               DONE
+        -- create a ID generation function to properly increment the Task ID even after restarting the app
+            -- current plan - count the "{" and use that as a base of ID generation
+        -- test for buffer overflow in Title and Description
     -- tasks_list.c 
         -- if no arguments are passed - list all tasks, otherwise list by ID
             -- implement a check if real integer ID is passed
