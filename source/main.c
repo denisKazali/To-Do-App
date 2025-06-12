@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include "../headers/menu.h"
 #include "../headers/tasks_type.h"
+#include "../headers/tasks_create.h"
 
 //Enum of possible menu choices
 typedef enum{MAIN_MENU, ADD_TASK, LIST_TASKS, DELETE_TASK, EDIT_TASK} menu_options_t;
@@ -26,13 +27,13 @@ int main(void){
     //Main Cycle
     while(no_exit){
         //Using if statements for checking the current_menu status because it looks easier to understand
-        if(scanf("%u", &user_option)){
+        if(scanf("%hu", &user_option)){
             flush_stdin();
             if(current_menu == MAIN_MENU){
+                char *title_buffer = (char *)malloc(title_size * sizeof(char));
+                char *description_buffer = (char *)malloc(description_size * sizeof(char));
                 switch(user_option){
                     case 0:
-                        char *title_buffer = (char *)malloc(title_size * sizeof(char));
-                        char *description_buffer = (char *)malloc(description_size * sizeof(char));
                         clear_menu();
                         printf("\tADD TASK\n");
                         printf("Enter title: ");

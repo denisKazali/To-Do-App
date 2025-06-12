@@ -2,9 +2,10 @@
 #define TASKS_CREATE_H
 #include "../headers/file_utils.h"
 #include "../headers/tasks_type.h"
+#include <stdlib.h>
 
-int create_task(Task* task);
-Task* print_task(char *title, char *description, size_t title_size, size_t description_size);
+int print_task(Task* task);
+int create_task(char *title, char *description, size_t title_size, size_t description_size);
 
 
 
