@@ -6,10 +6,11 @@ Create new .c files each for a specific task:
             -- title - char string - short lenght, no spaces                                                DONE
             -- description - char string, start with buffer size 200, later implement dynamic allocation    DONE
             -- status - use enums (DONE, PENDING, IN_PROCESS)                                               DONE
-        -- create a ID generation function to properly increment the Task ID even after restarting the app
-            -- current plan - count the "{" and use that as a base of ID generation
+        -- create a ID generation function to properly increment the Task ID even after restarting the app  DONE
         -- test for buffer overflow in Title and Description
     -- tasks_list.c 
+        -- create a 'Task task_parser(FILE *file)' function that reads the file and stores each line to
+            the corresponding Task struct field - id, title, description, status
         -- if no arguments are passed - list all tasks, otherwise list by ID
             -- implement a check if real integer ID is passed
                 -- on later stage add a search by keyword option
