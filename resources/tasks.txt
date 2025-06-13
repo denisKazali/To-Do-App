@@ -1,8 +1,27 @@
+
 {
  id:0
- title:Test
+ title:Test 0
 
- description:Test
+ description:The index if this task should be 0
+
+ status:PENDING
+}
+
+{
+ id:1
+ title:Test 1
+
+ description:The Id of this task should be 1
+
+ status:PENDING
+}
+
+{
+ id:2
+ title:Test 2
+
+ description:The id of this task should be 2
 
  status:PENDING
 }

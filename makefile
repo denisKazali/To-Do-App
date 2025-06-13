@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -std=c11 -Wall -Wextra
-SRC = source/main.c source/menu.c source/tasks_create.c source/file_utils.c
-OBJ = main.o menu.o tasks_create.o file_utils.o
+SRC = source/main.c source/menu.c source/tasks_create.c source/file_utils.c source/index_utils.c
+OBJ = main.o menu.o tasks_create.o file_utils.o index_utils.o
 TARGET = app
 
 all: $(TARGET)

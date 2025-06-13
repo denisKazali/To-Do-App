@@ -1,6 +1,7 @@
 #include "../headers/tasks_type.h"
 #include "../headers/file_utils.h"
 #include "../headers/tasks_create.h"
+#include "../headers/index_utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +10,8 @@
 //print_task function and checks if the task is printed correctly. Returns 0 when task is printed and 1 if not
 //print_task returns 0 if the file is opened and 1 if there is error with opening the file
 int create_task(char *title, char *description, size_t title_s, size_t description_s){
-    Task user_task = {.id=0, .title_size=title_s, .description_size=description_s, .title=title, .description=description, .status=0};
+    size_t index = get_index(open_file('r'));
+    Task user_task = {.id=index, .title_size=title_s, .description_size=description_s, .title=title, .description=description, .status=0};
     if(print_task(&user_task)){
         printf("Task created successfully! \n");
         return 0;
