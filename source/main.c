@@ -3,6 +3,7 @@
 #include "../headers/menu.h"
 #include "../headers/tasks_type.h"
 #include "../headers/tasks_create.h"
+#include "../headers/index_utils.h"
 
 //Enum of possible menu choices
 typedef enum{MAIN_MENU, ADD_TASK, LIST_TASKS, DELETE_TASK, EDIT_TASK} menu_options_t;
@@ -13,7 +14,6 @@ void flush_stdin();
 int main(void){
     //On startup
 	clear_menu();
-	print_menu();
     //Creating user_option variable, where we'll store the choice of the user
     //Setting user_option variable to arbitrary number out of the possible choice range -> 0 to 4
     //Creating current_menu variable to store the current state of the program
@@ -24,6 +24,9 @@ int main(void){
     size_t description_size = 100;
     //Variable controlling the main loop = state 1 -> program works, state 0 -> program exits
     unsigned short no_exit = 1;
+    sync_index(open_file('r', 'F'));
+    int index = get_index();
+    print_menu();
     //Main Cycle
     while(no_exit){
         //Using if statements for checking the current_menu status because it looks easier to understand
@@ -44,9 +47,11 @@ int main(void){
                         printf("Enter description: ");
                         fgets(description_buffer, description_size, stdin);
                         printf("\n");
-                        create_task(title_buffer, description_buffer, title_size, description_size);
+                        create_task(title_buffer, description_buffer, title_size, description_size, index);
                         free(title_buffer);
                         free(description_buffer);
+                        index++;
+                        save_index(index);
                         clear_menu();
                         print_menu();
                         current_menu = MAIN_MENU;
