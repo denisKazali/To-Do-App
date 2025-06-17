@@ -6,8 +6,6 @@
 #include<stdlib.h>
 
 int get_index(void);
-short save_index(int index);
-short sync_index(FILE *task_file);
 
 
 #endif

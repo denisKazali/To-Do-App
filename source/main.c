@@ -12,8 +12,15 @@ void to_main_menu(int* opt, menu_options_t* mnopt);
 void flush_stdin();
 
 int main(void){
-    //On startup
+    //On startup - clears the console and prints the menu
+    //creates a local index variable and implements it by 1
+    //so it doesnt start from 0 if it is the first task and 
+    //not to dublicate ids when the program is closed
 	clear_menu();
+    print_menu();
+    int index = get_index() + 1;
+    printf("\nDebug:Tasks counted =%d\n\n", index);
+
     //Creating user_option variable, where we'll store the choice of the user
     //Setting user_option variable to arbitrary number out of the possible choice range -> 0 to 4
     //Creating current_menu variable to store the current state of the program
@@ -22,11 +29,9 @@ int main(void){
     menu_options_t current_menu = MAIN_MENU;
     size_t title_size = 30;
     size_t description_size = 100;
+
     //Variable controlling the main loop = state 1 -> program works, state 0 -> program exits
     unsigned short no_exit = 1;
-    sync_index(open_file('r', 'F'));
-    int index = get_index();
-    print_menu();
     //Main Cycle
     while(no_exit){
         //Using if statements for checking the current_menu status because it looks easier to understand
@@ -48,10 +53,9 @@ int main(void){
                         fgets(description_buffer, description_size, stdin);
                         printf("\n");
                         create_task(title_buffer, description_buffer, title_size, description_size, index);
+                        index += 1;
                         free(title_buffer);
                         free(description_buffer);
-                        index++;
-                        save_index(index);
                         clear_menu();
                         print_menu();
                         current_menu = MAIN_MENU;

@@ -6,7 +6,7 @@ typedef enum {PENDING, IN_PROCESS, DONE, STUCK} status_t;
 
 typedef struct {
     
-    size_t id;
+    int id;
     size_t title_size;
     size_t description_size;
     char *title;
