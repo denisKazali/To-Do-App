@@ -47,6 +47,10 @@ int main(void){
                         printf("Enter title: ");
                         fgets(title_buffer, title_size, stdin);
                         printf("\n");
+                        if(!strchr(title_buffer, '\n')){
+                            //Flush 
+                            flush_stdin();
+                        }
                         clear_menu();
                         printf("\tADD TASK\n");
                         printf("Enter description: ");
@@ -54,6 +58,10 @@ int main(void){
                         printf("\n");
                         create_task(title_buffer, description_buffer, title_size, description_size, index);
                         index += 1;
+                        if(!strchr(description_buffer, '\n')){
+                            //Flush
+                            flush_stdin();
+                        }
                         free(title_buffer);
                         free(description_buffer);
                         clear_menu();
